@@ -1,11 +1,11 @@
-import BookList from "./BooksList";
-import BookForm from "./BookForm";
+import BookList from './BooksList';
+import BookForm from './BookForm';
 
-const Books = () => {
-  return (
-    <>
+const Books = () => (
+  <>
     <BookList />
     <BookForm />
-    </>
-  )
-}
+  </>
+);
+
+export default Books;
