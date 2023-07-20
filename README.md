@@ -22,7 +22,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Math Magicians: setup] 
+# 📖 [Bookstore Rod] 
 
 "Bookstore Rod" is a website similar to the "Awesome Books" website built in the previous module.
 
