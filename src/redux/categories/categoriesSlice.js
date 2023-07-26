@@ -8,11 +8,14 @@ const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
-    getCategories: (state) => {
-      state.categories.push('Under construction');
+    addBook: (state, action) => {
+      state.books.push(action.payload);
+    },
+    removeBook: (state, action) => {
+      state.books = state.books.filter((book) => book.item_id !== action.payload);
     },
   },
 });
 
-export const { getCategories } = categoriesSlice.actions;
+export const { getCategories, addBook, removeBook } = categoriesSlice.actions;
 export default categoriesSlice.reducer;
