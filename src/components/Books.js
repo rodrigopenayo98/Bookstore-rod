@@ -2,23 +2,18 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 import BookForm from './BookForm';
-import { addBook, removeBook } from '../redux/books/booksSlice';
+import { removeBookAsync } from '../redux/books/booksSlice';
 
 const Books = () => {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.books.books);
 
-  const handleAddBook = (title, author) => {
-    const newBook = {
-      item_id: `item${books.length + 1}`,
-      title,
-      author,
-    };
-    dispatch(addBook(newBook));
-  };
-
-  const handleDeleteBook = (bookId) => {
-    dispatch(removeBook(bookId));
+  const handleDeleteBook = async (bookId) => {
+    try {
+      await dispatch(removeBookAsync(bookId));
+    } catch (error) {
+      console.error('Error removing book:', error.message);
+    }
   };
 
   return (
@@ -33,7 +28,7 @@ const Books = () => {
           />
         ))}
       </ul>
-      <BookForm onAddBook={handleAddBook} />
+      <BookForm />
     </>
   );
 };
