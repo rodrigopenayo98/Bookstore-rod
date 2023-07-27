@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 import BookForm from './BookForm';
-import { removeBookAsync } from '../redux/books/booksSlice';
+import { removeBook } from '../redux/books/booksSlice';
 
 const Books = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const Books = () => {
 
   const handleDeleteBook = async (bookId) => {
     try {
-      await dispatch(removeBookAsync(bookId));
+      await dispatch(removeBook(bookId));
     } catch (error) {
       console.error('Error removing book:', error.message);
     }

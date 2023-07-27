@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from './Button';
-import { addBookAsync } from '../redux/books/booksSlice';
+import { addBook } from '../redux/books/booksSlice';
 
 const BookForm = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const BookForm = () => {
     };
 
     try {
-      await dispatch(addBookAsync(newBook));
+      await dispatch(addBook(newBook));
       setTitle('');
       setAuthor('');
     } catch (error) {

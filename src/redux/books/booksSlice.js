@@ -26,7 +26,7 @@ const initialState = {
   error: null,
 };
 
-export const addBookAsync = createAsyncThunk('books/addBook', async (newBook) => {
+export const addBook = createAsyncThunk('books/addBook', async (newBook) => {
   try {
     await api.post('/books', newBook);
     return newBook;
@@ -35,7 +35,7 @@ export const addBookAsync = createAsyncThunk('books/addBook', async (newBook) =>
   }
 });
 
-export const removeBookAsync = createAsyncThunk('books/removeBook', async (bookId) => {
+export const removeBook = createAsyncThunk('books/removeBook', async (bookId) => {
   try {
     await api.delete(`/books/${bookId}`);
     return bookId;
@@ -50,25 +50,25 @@ const booksSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(addBookAsync.pending, (state) => {
+      .addCase(addBook.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(addBookAsync.fulfilled, (state, action) => {
+      .addCase(addBook.fulfilled, (state, action) => {
         state.status = 'idle';
         state.books.push(action.payload);
       })
-      .addCase(addBookAsync.rejected, (state, action) => {
+      .addCase(addBook.rejected, (state, action) => {
         state.status = 'error';
         state.error = action.error.message;
       })
-      .addCase(removeBookAsync.pending, (state) => {
+      .addCase(removeBook.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(removeBookAsync.fulfilled, (state, action) => {
+      .addCase(removeBook.fulfilled, (state, action) => {
         state.status = 'idle';
         state.books = state.books.filter((book) => book.item_id !== action.payload);
       })
-      .addCase(removeBookAsync.rejected, (state, action) => {
+      .addCase(removeBook.rejected, (state, action) => {
         state.status = 'error';
         state.error = action.error.message;
       });
