@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
 import Button from './Button';
+import { addBook } from '../redux/books/booksSlice';
 
-const AddBook = () => {
+const BookForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const handleAddBook = () => {
+  const handleAddBook = async () => {
     const newItemId = `item${Math.random().toString(36).substr(2, 9)}`;
 
-    dispatch(addBook({
+    const newBook = {
       item_id: newItemId,
       title,
       author,
       category: 'Fiction',
-    }));
+    };
 
-    setTitle('');
-    setAuthor('');
+    try {
+      await dispatch(addBook(newBook));
+      setTitle('');
+      setAuthor('');
+    } catch (error) {
+      console.error('Error adding book:', error.message);
+    }
   };
 
   return (
@@ -44,4 +49,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default BookForm;
