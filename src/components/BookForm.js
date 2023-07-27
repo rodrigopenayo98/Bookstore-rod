@@ -28,22 +28,31 @@ const BookForm = () => {
   };
 
   return (
-    <div>
-      <h1>ADD NEW BOOK</h1>
-      <form>
+    <div className="container-form">
+      <h1 className="title-form">ADD NEW BOOK</h1>
+      <form className="form">
         <input
+          className="input-title-book"
           type="text"
           placeholder="Book Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-        />
-        <Button text="Add Book" handleAddBook={handleAddBook} />
+        <div className="input-container">
+          <div className="input-author-book-container">
+            <input
+              className="input-author-book"
+              type="text"
+              placeholder="Category"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+            />
+            <div className="dropdown-container">
+              {/* Contenido del dropdown aquí */}
+            </div>
+          </div>
+        </div>
+        <Button text="ADD BOOK" handleAddBook={handleAddBook} />
       </form>
     </div>
   );
