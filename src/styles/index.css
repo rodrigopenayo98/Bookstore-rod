@@ -151,3 +151,14 @@
   position: relative;
   display: inline-block;
 }
+
+/* book-section */
+
+.book-section{
+  border: solid 1px grey;
+}
+
+.book-card{
+  border: solid 1px grey;
+  background-color: #888;
+}

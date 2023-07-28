@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Book from './Book';
 import BookForm from './BookForm';
 import { removeBook } from '../redux/books/booksSlice';
+import BookSection from './BookSection';
 
 const Books = () => {
   const dispatch = useDispatch();
@@ -18,16 +18,18 @@ const Books = () => {
 
   return (
     <>
-      <ul className="book-list">
+      <div className="book-section">
         {books.map((book) => (
-          <Book
+          <BookSection
             key={book.item_id}
-            bookTitle={book.title}
+            title={book.title}
             author={book.author}
-            onDelete={() => handleDeleteBook(book.item_id)}
+            category={book.category}
+            bookId={book.id}
+            onClick={() => handleDeleteBook(book.item_id)}
           />
         ))}
-      </ul>
+      </div>
       <BookForm />
     </>
   );
