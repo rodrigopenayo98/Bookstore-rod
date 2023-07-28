@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import Dropdown from 'react-dropdown';
 import { useDispatch } from 'react-redux';
 import Button from './Button';
 import { addBook } from '../redux/books/booksSlice';
+import wordSpacing from './Spacing';
 
 const BookForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleAddBook = async () => {
     const newItemId = `item${Math.random().toString(36).substr(2, 9)}`;
@@ -39,18 +42,20 @@ const BookForm = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <div className="input-container">
-          <div className="input-author-book-container">
-            <input
-              className="input-author-book"
-              type="text"
-              placeholder="Category"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-            <div className="dropdown-container">
-              {/* Contenido del dropdown aquí */}
-            </div>
-          </div>
+          <Dropdown
+            options={[
+              'Action',
+              'Science Fiction',
+              'Economy',
+              'Fiction',
+              'Nonfiction',
+            ]}
+            value={category}
+            onChange={(selectedOption) => setCategory(selectedOption.value)}
+            placeholder={`Category${wordSpacing}${wordSpacing}${wordSpacing}▼`}
+            className="dropdown"
+            required
+          />
         </div>
         <Button text="ADD BOOK" handleAddBook={handleAddBook} />
       </form>
