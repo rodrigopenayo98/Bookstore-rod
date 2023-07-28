@@ -40,6 +40,10 @@
   background-color: #ffffff;
 }
 
+.nav-list li:nth-child(2) {
+  opacity: 0.5;
+}
+
 .nav-link{
   width: 3.688rem;
   height: 1rem;
@@ -136,6 +140,11 @@
   letter-spacing: 0.5px;
   text-align: center;
   color: #ffffff; 
+  cursor: pointer;
+}
+
+.button-form:hover{
+  background-color: #46a8f3;
 }
 
 .dropdown-container {
@@ -185,6 +194,11 @@
   height: 10.625rem;
   margin: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.book-card:hover{
+  border: solid 1px #0290ff;
 }
 
 .book-main-content{
@@ -264,7 +278,14 @@
   color: #4386bf;
   text-align: left;
   background-color: #ffffff;
+  cursor: pointer;
 }
+
+.book-menu-button:hover{
+ color: #0290ff;
+}
+
+
 
 .book-menu-item + .book-menu-item {
   border-left: 1px solid #ccc;
@@ -368,6 +389,11 @@
   background-color: #0290ff;
   border: none;
   color: #fafafa;
+  cursor: pointer;
+}
+
+.button-chapter:hover{
+  background-color: #46a8f3;
 }
 
 .line {
