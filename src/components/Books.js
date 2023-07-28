@@ -30,6 +30,7 @@ const Books = () => {
           />
         ))}
       </div>
+      <div className="line-form" />
       <BookForm />
     </>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MyProcess from './Process';
 
 const BookSection = ({
   bookId, title, author, category, onClick,
@@ -32,22 +33,13 @@ const BookSection = ({
       </div>
     </div>
     <div className="book-progress-section">
-      <progress
-        value="75"
-        min="0"
-        max="100"
-        style={{
-          height: 0,
-          width: 0,
-        }}
-      >
-        64%
-      </progress>
+      <MyProcess />
       <div className="book-info-progress">
         <h3 className="level-progress">50%</h3>
         <p className="status-progress">Completed</p>
       </div>
     </div>
+    <div className="line" />
     <div className="book-chapter-section">
       <h3 className="book-current-chapter">CURRENT CHAPTER</h3>
       <h2 className="book-title-chapter">Chapter 17</h2>
